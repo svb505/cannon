@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="canon/canon.vcxproj" Id="9984b539-f3c3-450a-82a7-8610a328b7b6" />
+</Solution>
