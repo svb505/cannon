@@ -27,7 +27,7 @@
     <ClCompile Include="lightning.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="hethight.cpp">
+    <ClCompile Include="gethight.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="environnement.cpp">

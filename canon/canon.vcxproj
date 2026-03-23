@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="environnement.cpp" />
-    <ClCompile Include="hethight.cpp" />
+    <ClCompile Include="gethight.cpp" />
     <ClCompile Include="lightning.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sounds.h" />

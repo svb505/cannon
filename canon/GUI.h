@@ -25,6 +25,12 @@ public:
 			cstrs.push_back(s.c_str());
 	}
 	void drawGui(int score,float reloadTime,float fps, Cannon& cn,Light& l, Target& trg) {
+		float yawRad = cn.cannonYaw * 3.1415926f / 180.0f;
+		float pitchRad = cn.cannonPitch * 3.1415926f / 180.0f;
+		float L = cn.barrelLength;
+		float yTop = cn.baseHeight + L * sin(pitchRad);
+		auto hit = computeImpact({ 0.0f,yTop,-5.0f }, shellSpeed, cn.cannonPitch, cn.cannonYaw);
+
 		ImGui::Begin("Settings & Info");
 
 		ImGui::Text("Gun pitch: %.1f", cn.cannonPitch);
@@ -36,6 +42,9 @@ public:
 
 		ImGui::Text("Distance to target: %.1f", sqrt(pow(trg.getCoordinates()[0],2) + 
 			pow(trg.getCoordinates()[1],2) + pow(trg.getCoordinates()[2], 2)));
+		ImGui::Text("Target position:(%.1f;%.1f;%.1f)", trg.getCoordinates()[0], trg.getCoordinates()[1],
+			-trg.getCoordinates()[2]);
+		ImGui::Text("Approximate coordinates of impact: (%.1f;%.1f;%.1f)",hit.x,hit.y,-hit.z);
 		ImGui::Dummy(ImVec2(0.0f, 10.0f));
 
 		ImGui::Checkbox("Enable light", &l.enabled);

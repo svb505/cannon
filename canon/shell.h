@@ -5,6 +5,33 @@
 
 float shellSpeed = 25.0f;
 
+struct Vec3 {
+	float x, y, z;
+};
+
+Vec3 computeImpact(Vec3 p0, float v, float pitch, float yaw) {
+	const float g = 9.81f;
+
+	float pitchRad = pitch * 3.14159265f / 180.0f;
+	float yawRad = yaw * 3.14159265f / 180.0f;
+
+	float vx = cos(pitchRad) * sin(yawRad) * shellSpeed;
+	float vy = (sin(pitchRad) * shellSpeed);
+	float vz = cos(pitchRad) * cos(yawRad) * shellSpeed;
+
+	float D = vy * vy + 2.0f * g * p0.y;
+	if (D < 0.0f)
+		return { NAN, NAN, NAN };
+
+	float t = (vy + sqrt(D)) / g;
+
+	Vec3 hit;
+	hit.x = p0.x + vx * t;
+	hit.y = 0.0f;
+	hit.z = p0.z + vz * t;
+
+	return hit;
+}
 struct Position {
 	float x0, y0, z0;
 	float x, y, z;

@@ -21,7 +21,7 @@ void drawGridText(float camX, float camZ) {
             float x = baseX + i;
             float z = baseZ + j;
 
-            std::string text = std::format("({:.0f},{:.0f})", x, -z);
+            std::string text = std::format("(X:{:.0f};Z:{:.0f})", x, -z);
             float y = getHeight(x, z) + 1.5f;
             RenderTextWorld(x, y, z, 1.0f, 1.0f, 1.0f, text.c_str());
         }

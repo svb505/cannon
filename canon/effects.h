@@ -194,8 +194,3 @@ public:
         glPopMatrix();
     }
 };
-
-
-
-
-#pragma once
