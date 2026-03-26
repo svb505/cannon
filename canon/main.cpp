@@ -204,6 +204,8 @@ int main(){
         if (level == 1) cannon.drawTrajectory(0.0f, 0.5f, -13.0f,cannon.cannonYaw,cannon.cannonPitch,
             shellSpeed,shell.pos.gravity);
 
+        shell.updatePos(deltaTime);
+
         for (auto& s : shell.shells) {
             glPushMatrix();
             glTranslatef(s.x,s.y,s.z);
@@ -226,9 +228,6 @@ int main(){
                 trg.initTarget();
             }
         }
-
-        shell.updatePos(deltaTime);
-
         for (auto it = explosions.begin(); it != explosions.end();) {
             (*it)->Update(deltaTime);
             (*it)->Draw();
@@ -260,7 +259,11 @@ int main(){
             }
 
         }
-        
+        for (auto it = shell.shells.begin(); it != shell.shells.end();) {
+            if ((*it).y <= 0.0f) it = shell.shells.erase(it);
+            else ++it;
+        }
+
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window);
         glfwPollEvents();
