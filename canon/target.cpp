@@ -48,7 +48,7 @@ void Target::initTarget() {
 	static std::mt19937 gen(rd());
 
 	std::uniform_real_distribution<float> distX(-20.0f, 20.0f);
-	std::uniform_real_distribution<float> distZ(-50.0f, -20.0f);
+	std::uniform_real_distribution<float> distZ(-20.0f, -90.0f);
 
 	std::uniform_real_distribution<float> distS(0.6f, 0.9f);
 

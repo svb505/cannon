@@ -26,17 +26,7 @@ void MiniMap::draw(int ECRANW, int ECRANH, Cannon& cn, Target& trg, std::vector<
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(
-        coords[0] - 8.0f,
-        coords[1] + 5.0f,
-        coords[2] + 8.0f,
-
-        coords[0],
-        coords[1],
-        coords[2],
-
-        0, 1, 0
-    );
+    gluLookAt(coords[0],coords[1] + 5.0f,coords[2] + 8.0f,coords[0],coords[1],coords[2],0, 1, 0);
 
     glClear(GL_DEPTH_BUFFER_BIT);
 

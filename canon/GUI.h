@@ -33,6 +33,8 @@ public:
 
 		ImGui::Begin("Settings & Info");
 
+		if (ImGui::Button("Reset target")) trg.initTarget();
+
 		ImGui::Text("Gun pitch: %.1f", cn.cannonPitch);
 		ImGui::Text("Gun yaw: %.1f", cn.cannonYaw);
 		ImGui::Dummy(ImVec2(0.0f, 10.0f));
@@ -40,11 +42,9 @@ public:
 		ImGui::SliderFloat("Shell speed", &shellSpeed, 10.0f, 50.0f);
 		ImGui::Dummy(ImVec2(0.0f, 10.0f));
 
-		ImGui::Text("Distance to target: %.1f", sqrt(pow(trg.getCoordinates()[0],2) + 
-			pow(trg.getCoordinates()[1],2) + pow(trg.getCoordinates()[2], 2)));
-		ImGui::Text("Target position:(%.1f;%.1f;%.1f)", trg.getCoordinates()[0], trg.getCoordinates()[1],
+		ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f),"Target position:(%.1f;%.1f;%.1f)", trg.getCoordinates()[0], trg.getCoordinates()[1],
 			-trg.getCoordinates()[2]);
-		ImGui::Text("Approximate coordinates of impact: (%.1f;%.1f;%.1f)",hit.x,hit.y,-hit.z);
+		ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.0f, 1.0f),"Approx. impact: (%.1f;%.1f;%.1f)",hit.x,hit.y,-hit.z);
 		ImGui::Dummy(ImVec2(0.0f, 10.0f));
 
 		ImGui::Checkbox("Enable light", &l.enabled);

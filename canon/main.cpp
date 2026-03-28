@@ -225,7 +225,7 @@ int main(){
 
                 s.alive = true;
             }
-            if (trg.checkCollision(s.x,s.y,s.z, trg.getS())) {
+            if (trg.checkCollision(s.x,s.y,s.z,1.0f)) {
                 score++;
                 trg.initTarget();
             }
