@@ -26,11 +26,23 @@ void MiniMap::draw(int ECRANW, int ECRANH, Cannon& cn, Target& trg, std::vector<
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(coords[0] - 5.0f, coords[1] + 10.0f, coords[2], coords[0], coords[1], coords[2], 0, 0, -1);
+    gluLookAt(
+        coords[0] - 8.0f,
+        coords[1] + 5.0f,
+        coords[2] + 8.0f,
+
+        coords[0],
+        coords[1],
+        coords[2],
+
+        0, 1, 0
+    );
 
     glClear(GL_DEPTH_BUFFER_BIT);
 
     drawGround(cam.x,cam.z);
+
+    trg.draw();
 
     for (auto it = explosions.begin(); it != explosions.end(); ++it) (*it)->Draw();
     for (auto it = smokes.begin(); it != smokes.end(); ++it) (*it)->Draw();

@@ -19,6 +19,7 @@
 #include "effects.h"
 #include "GUI.h"
 #include "lightning.h"
+#include "minimap.h"
 
 #define WW 1500
 #define WH 900
@@ -30,6 +31,7 @@ Sound sound;
 Target trg;
 GUI gui;
 Light light;
+MiniMap mnm;
 
 int score = 0;
 int level = 1;
@@ -223,7 +225,7 @@ int main(){
 
                 s.alive = true;
             }
-            if (trg.checkCollision(s.x,s.y,s.z,0.3f)) {
+            if (trg.checkCollision(s.x,s.y,s.z, trg.getS())) {
                 score++;
                 trg.initTarget();
             }
@@ -263,6 +265,8 @@ int main(){
             if ((*it).y <= 0.0f) it = shell.shells.erase(it);
             else ++it;
         }
+
+        mnm.draw(WW, WH, cannon, trg, explosions, smokes, camera, deltaTime);
 
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window);

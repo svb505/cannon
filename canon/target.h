@@ -11,6 +11,7 @@ private:
 	std::vector<float> pos = { 0,0,0 };
 	float s = 0.2;
 public:
+	float getS() { return s; }
 	std::vector<float> getCoordinates() { return pos; }
 	void draw();
 	void initTarget();

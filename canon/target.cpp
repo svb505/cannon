@@ -50,7 +50,7 @@ void Target::initTarget() {
 	std::uniform_real_distribution<float> distX(-20.0f, 20.0f);
 	std::uniform_real_distribution<float> distZ(-50.0f, -20.0f);
 
-	std::uniform_real_distribution<float> distS(0.5f, 0.9f);
+	std::uniform_real_distribution<float> distS(0.6f, 0.9f);
 
 	pos[0] = distX(gen);
 	pos[2] = distZ(gen);
@@ -60,7 +60,6 @@ void Target::initTarget() {
 
 }
 bool Target::checkCollision(float sX, float sY, float sZ, float sStep) {
-	std::cout << "Shell: " << sX << " Target: " << pos[0] << "\n";
 	float tgMinX = pos[0] - s;
 	float tgMaxX = pos[0] + s;
 	float tgMinY = pos[1] - s;

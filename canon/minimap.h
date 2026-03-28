@@ -8,7 +8,7 @@ class Camera;
 
 class MiniMap {
 private:
-    float height = 80.0f;
+    float height = 20.0f;
 public:
     int step = 3;
 
